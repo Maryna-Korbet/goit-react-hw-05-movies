@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams, useLocation, Outlet } from 'react-router-dom';
 import MovieInfo  from 'components/MovieInfo/MovieInfo';
 import Loader from 'components/Loader/Loader';
-import { StyledLink } from "pages/MoviesDetails.styled";
+import { StyledLink, Сontainer, OtherInfo, OtherInfoLink } from 'pages/MoviesDetails.styled';
 
 const ERROR_MESSAGE = 'No movie info.'; 
 
@@ -55,6 +55,22 @@ const MoviesDetails = () => {
       {error && <p style={{ color: 'red'}}>{ERROR_MESSAGE}</p>}
       {isLoading && <Loader />}
       {!isLoading && !error && <MovieInfo movieInfo={movieInfo} />}
+
+      <Сontainer>
+        <p>Additional information</p>
+        <OtherInfo>
+            <li>
+                <OtherInfoLink to={'cast'} state={{ from: location?.state?.from }}>
+                Cast
+                </OtherInfoLink>
+            </li>
+            <li>
+                <OtherInfoLink  to={'reviews'} state={{ from: location?.state?.from }}>
+                Reviews
+                </OtherInfoLink>
+            </li>
+        </OtherInfo>
+      </Сontainer>
       <Outlet />
     </div>
   );

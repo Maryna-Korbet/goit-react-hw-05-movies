@@ -48,3 +48,31 @@ export async function fetchMovieById(movieId) {
     console.log(ERROR_MESSAGE);
   }
 }
+
+// Request for Cast
+export async function fetchMovieCast(movieId) {
+  try {
+    const response = await axios.get(`movie/${movieId}/credits`, {
+      params: {
+        api_key: KEY,
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(ERROR_MESSAGE);
+  }
+}
+
+// Request for Reviews
+export async function fetchMovieReviews(movieId) {
+  try {
+    const response = await axios.get(`movie/${movieId}/reviews`, {
+      params: {
+        api_key: KEY,
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(ERROR_MESSAGE);
+  }
+}
