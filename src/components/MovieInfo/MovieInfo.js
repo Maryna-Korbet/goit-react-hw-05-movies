@@ -1,4 +1,5 @@
 import { Container } from 'components/MovieInfo/MovieInfo.styled';
+import PropTypes from 'prop-types';
 
 const MovieInfo = ({ movieInfo }) => {
   const {
@@ -49,6 +50,18 @@ const MovieInfo = ({ movieInfo }) => {
       </div>
     </Container>
   );
+};
+
+MovieInfo.protoTypes ={
+  movieInfo: PropTypes.shape ({
+    poster_path: PropTypes.object,
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
+    popularity: PropTypes.number,
+    status: PropTypes.string,
+    overview: PropTypes.string,
+    genres: PropTypes.array,
+  })
 };
 
 export default MovieInfo;

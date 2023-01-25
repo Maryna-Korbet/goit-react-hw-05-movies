@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const MoviesGallery = ({ movies }) => {
   const location = useLocation();
@@ -14,6 +15,14 @@ const MoviesGallery = ({ movies }) => {
         ))}
       </ul>
   );
+};
+
+MoviesGallery.protoTypes ={
+  movies: PropTypes.shape ({
+    id: PropTypes.number.isRequired, 
+    title: PropTypes.string,
+    name: PropTypes.string,
+  })
 };
 
 export default MoviesGallery;
