@@ -1,21 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "pages/Home";
-import { Movies } from "pages/Movies";
-import { Container, Header, Link } from "components/App/App.styled";
+import SharedLayout from "components/SharedLayout/SharedLayout";
+import Home from "pages/Home";
+import Movies  from "pages/Movies";
+import MoviesDetails from "pages/MoviesDetails";
 
 export const App = () => {
   return (
-    <Container>
-            <Header>
-                <nav>
-                    <Link to="/" end>Home</Link>
-                    <Link to="/movies">Movies</Link>
-                </nav>
-            </Header>
+    <div>
     <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />}/>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:movieId" element={<MoviesDetails />} />
+      </Route>
     </Routes>
-    </Container>
+    </div>
   )
 };

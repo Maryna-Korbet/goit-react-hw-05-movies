@@ -12,7 +12,8 @@ export async function fetchTrendingMovies() {
           params: {
             api_key: KEY,
           },
-        });
+        },
+        );
         return response.data.results;
       } catch {
         console.log(ERROR_MESSAGE);
@@ -20,21 +21,30 @@ export async function fetchTrendingMovies() {
 }
 
 // Request for Movies
-export async function fetchSearchMovies (fetchQuery) {
-  try{
-    const response = await axios.get(`/search/movie`, {
-    params: {
-      api_key: KEY,
-      query: fetchQuery,
-    },
-  });
-  return response.data;
-  }catch {
+export async function fetchSearchMovies(search) {
+  try {
+    const response = await axios.get(`search/movie`, {
+      params: {
+        api_key: KEY,
+        query: search,
+      },
+    });
+    return response;
+  } catch (error) {
     console.log(ERROR_MESSAGE);
   }
-};
+}
 
-
-
-
-
+// Request for MovieDetails
+export async function fetchMovieById(movieId) {
+  try {
+    const response = await axios.get(`movie/${movieId}`, {
+      params: {
+        api_key: KEY,
+      },
+    });
+    return response;
+  } catch {
+    console.log(ERROR_MESSAGE);
+  }
+}
